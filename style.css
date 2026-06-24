@@ -1,0 +1,234 @@
+/* ===========================
+   PORTFOLIO SITE — style.css
+   =========================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --black:       #000000;
+  --white:       #ffffff;
+  --sidebar-w:   220px;
+  --header-h:    72px;
+  --accent:      #444444;
+  --link-active: #ffffff;
+  --link-hover:  #cccccc;
+  --border:      #000000;
+}
+
+body {
+  font-family: 'Georgia', serif;
+  background: var(--white);
+  color: var(--black);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── HEADER ── */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-h);
+  background: var(--black);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+header h1 {
+  font-family: 'Arial Black', 'Arial', sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ── LAYOUT SHELL ── */
+.layout {
+  display: flex;
+  margin-top: var(--header-h);
+  min-height: calc(100vh - var(--header-h));
+}
+
+/* ── SIDEBAR ── */
+nav.sidebar {
+  position: fixed;
+  top: var(--header-h);
+  left: 0;
+  width: var(--sidebar-w);
+  height: calc(100vh - var(--header-h));
+  background: var(--black);
+  color: var(--white);
+  overflow-y: auto;
+  padding-bottom: 2rem;
+  z-index: 90;
+}
+
+nav.sidebar .toc-title {
+  font-family: 'Arial Black', 'Arial', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 900;
+  padding: 0.9rem 1rem 0.5rem;
+  border-bottom: 3px solid var(--white);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.04em;
+}
+
+nav.sidebar ul {
+  list-style: none;
+}
+
+nav.sidebar ul li {
+  line-height: 1.3;
+}
+
+/* Top-level entries */
+nav.sidebar ul > li > a {
+  display: block;
+  padding: 0.55rem 1rem 0.35rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--white);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+nav.sidebar ul > li > a:hover,
+nav.sidebar ul > li > a.active {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+/* Revision sub-list */
+nav.sidebar ul .revisions {
+  list-style: none;
+  padding-left: 0;
+}
+
+nav.sidebar ul .revisions li a {
+  display: block;
+  padding: 0.25rem 1rem 0.25rem 2rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--white);
+  text-decoration: none;
+  text-align: right;
+  transition: color 0.15s;
+}
+
+nav.sidebar ul .revisions li a:hover,
+nav.sidebar ul .revisions li a.active {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+/* ── MAIN CONTENT ── */
+main.content {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 0;
+  padding: 1.5rem 1.5rem 2rem 1.5rem;
+  align-items: start;
+}
+
+.blockquote {
+	display: inline-block;
+	padding-left: 2em;
+}
+
+.code-block {
+}
+
+.indent {
+	margin-left: 2em;
+}
+
+
+/* ── PDF VIEWER ── */
+.pdf-viewer {
+  border: 2px solid var(--border);
+  background: var(--white);
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.pdf-viewer iframe {
+  width: 100%;
+  flex: 1;
+  min-height: 75vh;
+  border: none;
+  display: block;
+}
+
+.pdf-placeholder {
+  width: 100%;
+  flex: 1;
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Arial Black', 'Arial', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--black);
+  background: var(--white);
+}
+
+/* ── COMMENTS COLUMN ── */
+.comments {
+  padding: 0.25rem 1.5rem 0 0;
+}
+
+.comments p {
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: 'Arial', sans-serif;
+  color: var(--black);
+  line-height: 1.5;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  main.content {
+    grid-template-columns: 1fr;
+  }
+  .comments {
+    padding: 1rem 0 0 0;
+  }
+}
+
+@media (max-width: 640px) {
+  nav.sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    top: 0;
+  }
+  .layout {
+    flex-direction: column;
+  }
+  main.content {
+    margin-left: 0;
+  }
+  header h1 {
+    font-size: 1.3rem;
+  }
+}
+
+footer {
+	text-align: right;
+	padding: 8px;
+	background-color: Black;
+	color: white;
+}
